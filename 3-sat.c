@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "3-sat.h"
 
 void proximo(char *v, int VAR, int VL) {
     int i;
@@ -39,10 +39,4 @@ void automatico() {
 void manual() {
 
 
-}
-
-int main() {
-    percorrer(2, 3);
-
-    return 0;
 }
