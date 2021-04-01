@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 
-void proximo(char *v, int VAR, int VL);
-void percorrer(int VAR, int VL);
+int boolSat(int * truthValue,int (*clause)[3]);
+int genCombination(int *arr,int size,int *base,int actSize, int (*clause)[3]);
 void automatico();
 void manual();
