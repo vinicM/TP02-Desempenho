@@ -143,26 +143,20 @@ void menuAutomatic(){
 		if (escolha == 49){
 			int N = 15 ;
 			int C;
-			int randomic1,test,counter = 1 ;
+			int randomic1,randomic2,randomic3,test,counter = 1 ;
 			int i,j,comb = 1;
 			VAR = N;
 			C = (N/3)*2;
-			char mat[16][11];
+			char mat[11][16];
 
    			for(i=0; i<C; i++){
 				for(j=0; j<N; j++)
 					mat[i][j] = 0;
 			}
 
+			srand(time(0));
 			for(i=0; i<C; i++){
-				for(j=0; j<N; j++){
-					printf("%d",mat[i][j]);
-					
-			}printf("\n");
-			}
-			
-			printf("\n\n\n\n");
-			for(i=0; i<C; i++){
+				
 				randomic1 = rand()%N;
 				test = rand()%3 ;
 				if(test == 0){
@@ -170,19 +164,30 @@ void menuAutomatic(){
 				}
 				mat[i][randomic1] = test;
 		
-				randomic1 = rand()%N;
+				
+				randomic2 = rand()%N;
+				while(randomic2 == randomic1){
+					randomic2 = rand()%N;
+				}
 				test = rand()%3 ;
 				if(test == 0){
 				 	test++;
 				}
-				mat[i][randomic1] = test;
+				mat[i][randomic2] = test;
 
-				randomic1 = rand()%N;
+				
+				randomic3 = rand()%N;
+				while(randomic3 == randomic2 || randomic3 == randomic1){
+
+					randomic3 = rand()%N;
+				}
 				test = rand()%3 ;
 				if(test == 0){
 				 	test++;
 				}
-				mat[i][randomic1] = test;
+				mat[i][randomic3] = test;
+
+				
 			}
 
 			for(i=0; i<C; i++){
