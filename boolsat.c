@@ -138,28 +138,53 @@ void menuAutomatic(){
 		int escolha;
 		escolha = getch();
 
+		system("cls");
+
 		if (escolha == 49){
 			int N = 15 ;
+			int C;
+			int randomic1,test,counter = 1 ;
 			int i,j,comb = 1;
-
 			VAR = N;
+			C = (N/3)*2;
+			char mat[16][11];
 
-			char v[101];
-   			for(i=0; i<VAR; i++) v[i] = 0;
-    		for(i=0; i<VAR; i++) comb *= VL;
-
-			
-			
-			comb = (N/3)*2;
-
-			for(i=0; i<comb; i++) {
-        		for(j=VAR-1; j>=0; j--) {
-            		printf("%d ", v[j]); // gera a matriz de O's
-        		}
-        		printf("\n");
-   			}
+   			for(i=0; i<C; i++){
+				for(j=0; j<N; j++)
+					mat[i][j] = 0;
+			}
 
 			
+			
+			for(i=0; i<C; i++){
+				randomic1 = rand()%N;
+				test = rand()%3 ;
+				if(test == 0){
+				 	test++;
+				}
+				mat[i][randomic1] = test;
+		
+				randomic1 = rand()%N;
+				test = rand()%3 ;
+				if(test == 0){
+				 	test++;
+				}
+				mat[i][randomic1] = test;
+
+				randomic1 = rand()%N;
+				test = rand()%3 ;
+				if(test == 0){
+				 	test++;
+				}
+				mat[i][randomic1] = test;
+				
+			}
+
+			for(i=0; i<C; i++){
+				for(j=0; j<N; j++)
+					printf("%d",mat[i][j]);
+					printf("\n");
+			}			
 			
 		} 
 
