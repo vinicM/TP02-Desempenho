@@ -154,8 +154,14 @@ void menuAutomatic(){
 					mat[i][j] = 0;
 			}
 
+			for(i=0; i<C; i++){
+				for(j=0; j<N; j++){
+					printf("%d",mat[i][j]);
+					
+			}printf("\n");
+			}
 			
-			
+			printf("\n\n\n\n");
 			for(i=0; i<C; i++){
 				randomic1 = rand()%N;
 				test = rand()%3 ;
@@ -177,13 +183,13 @@ void menuAutomatic(){
 				 	test++;
 				}
 				mat[i][randomic1] = test;
-				
 			}
 
 			for(i=0; i<C; i++){
-				for(j=0; j<N; j++)
+				for(j=0; j<N; j++){
 					printf("%d",mat[i][j]);
-					printf("\n");
+					
+			}printf("\n");
 			}			
 			
 		} 
