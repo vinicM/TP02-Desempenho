@@ -1,6 +1,10 @@
-#include<stdio.h>
-#include<time.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+#include <conio.h>
+#include <string.h>
+
+
 
 int numVar,numLine;
 
@@ -47,39 +51,156 @@ int genCombination(int *arr,int size,int *base,int actSize, int (*clause)[3]){
 	return flag;
 }
 
-void menuAutomatic(){
+void escolhaMenu(){
+	int a;
+	while(1){
+		printf("----------------------------------------------------------\n");
+		printf("----------------------------------------------------------\n");
+		printf("                                                          \n");
+		printf("            Escolha o tipo de entrada desejado:           \n");
+		printf("            1 - Manual        2 - Automatico              \n");
+		printf("                                                          \n");
+		printf("----------------------------------------------------------\n");
+		printf("----------------------------------------------------------\n");
 
+		a = getch();
 
+			if(a == 27){
+				system("cls");
+				break;
+			}else if(a == 49){
+				system("cls");
+								      
+			}else if(a == 50){
+				system("cls");
+				menuAutomatic();
+				break;
+			}
+	}
 
 }
 
+void menuManual(){
+
+	// int i,j,flag=0;
+	// int numRandom;
+	// scanf("%d",&numVar);
+	// scanf("%d",&numLine);
+	// int truthVal[101];
+	// int clause[101][3];
+
+	// for(i=0;i<numLine;i++){
+	// 	for(j=0;j<3;j++){
+	// 		srand(time(NULL));
+	// 		numRandom = 1 + rand() % (2-1);
+	// 		printf("%d\n", numRandom);
+	// 		clause[i][j] = numRandom;
+	// 	}
+	// }
+
+	// flag = genCombination(truthVal,numVar,truthVal,numVar,clause);
+
+	// if(flag==0){
+	// 	printf("not satisfiable\n");
+	// }else{
+	// 	for(i=0;i<numVar;i++){
+	// 		printf("%d ",truthVal[i]);
+	// 	}
+	// 	printf("\n");
+	// }
+
+	// return 0;
+
+}
+
+void proximo(char *v, int VAR, int VL) {
+    int i;
+    v[0]++;
+    for(i=0; i<VAR; i++) {
+        if(v[i] == VL) {
+            v[i] = 0;
+            v[i+1]++;
+        }
+    }
+}
+
+void menuAutomatic(){
+		int VAR, VL = 2;
+		printf("----------------------------------------------------------\n");
+		printf("----------------------------------------------------------\n");
+		printf("                                                          \n");
+		printf("            Escolha qual valor para N deseja  :           \n");
+		printf("     1 - 15        2 - 30        3 - 36        4 - 45     \n");
+		printf("                                                          \n");
+		printf("----------------------------------------------------------\n");
+		printf("----------------------------------------------------------\n");
+
+		int escolha;
+		escolha = getch();
+
+		if (escolha == 49){
+			int N = 15 ;
+			int i,j,comb = 1;
+
+			VAR = N;
+
+			char v[101];
+   			for(i=0; i<VAR; i++) v[i] = 0;
+    		for(i=0; i<VAR; i++) comb *= VL;
+
+			
+			
+			comb = (N/3)*2;
+
+			for(i=0; i<comb; i++) {
+        		for(j=VAR-1; j>=0; j--) {
+            		printf("%d ", v[j]); // gera a matriz de O's
+        		}
+        		printf("\n");
+   			}
+
+			
+			
+		} 
+
+	
+	// int i,j;
+	// int flag = 0 ;
+	// int numRandom;
+
+	// scanf("%d",&numVar);
+	// scanf("%d",&numLine);         //ATRIBUIR N =15/30/36/45
+
+	// int truthVal[101];
+	// int clause[101][3];
+
+	// for(i=0;i<numLine;i++){
+	// 	for(j=0;j<3;j++){
+	// 		srand(time(NULL));
+	// 		numRandom = 1 + rand() % (2-1);
+	// 		printf("%d\n", numRandom);
+	// 		clause[i][j] = numRandom;
+	// 	}
+	// }
+
+	// flag = genCombination(truthVal,numVar,truthVal,numVar,clause);
+
+	// if(flag==0){
+	// 	printf("not satisfiable\n");
+	// }else{
+	// 	for(i=0;i<numVar;i++){
+	// 		printf("%d ",truthVal[i]);
+	// 	}
+	// 	printf("\n");
+	// }
+
+	// return 0;
+	
+}
+
 int main(){
-	int i,j,flag=0;
-	int numRandom;
-	scanf("%d",&numVar);
-	scanf("%d",&numLine);
-	int truthVal[101];
-	int clause[101][3];
-
-	for(i=0;i<numLine;i++){
-		for(j=0;j<3;j++){
-			srand(time(NULL));
-			numRandom = 1 + rand() % (2-1);
-			printf("%d\n", numRandom);
-			clause[i][j] = numRandom;
-		}
-	}
-
-	flag = genCombination(truthVal,numVar,truthVal,numVar,clause);
-
-	if(flag==0){
-		printf("not satisfiable\n");
-	}else{
-		for(i=0;i<numVar;i++){
-			printf("%d ",truthVal[i]);
-		}
-		printf("\n");
-	}
-
+	
+	escolhaMenu();
 	return 0;
+
 }
