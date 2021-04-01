@@ -1,5 +1,5 @@
 #include "3-sat.h"
-int numVar, numLine;
+
 
 int boolSat(int * truthValue,int (*clause)[3]){
 	int i,j,val,sum;
@@ -41,7 +41,7 @@ int genCombination(int *arr,int size,int *base,int actSize, int (*clause)[3]){
 	return flag;
 }
 
-void automatico() {
+void automatic() {
 
 
 }

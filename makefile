@@ -1,5 +1,5 @@
 all:
-		gcc main.c -o main
+		gcc 3-sat.c main.c -o main
 run:
 		./main
 clean:
