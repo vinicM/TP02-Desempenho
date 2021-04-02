@@ -11,14 +11,18 @@ int numVar,numLine;
  *	satisfies all the given clauses else returns false                                    */
 int boolSat(int * truthValue,int (*clause)[3]){
 	int i,j,val,sum;
+	printf("%d", numLine);
 	for(i=0;i<numLine;i++){
 		sum = 0;
+		
 		for(j=0;j<3;j++){
 			val = clause[i][j];
 			if(val == 2){
+				
 				sum = sum + truthValue[val-1];
 			}if(val == 1){
-				sum = sum + (1 - truthValue[(-1*val)-1]);
+				
+				sum = sum + (truthValue[val+1]);
 			}
 		}
 		if(sum == 0){	// No need to check other clauses if one of the clause
@@ -34,14 +38,15 @@ int genCombination(int *arr,int size,int *base,int actSize, int (*clause)[3]){
 	if(size <= 0){
 		return 0;
 	}
-
 	for(i=0;i<2;i++){
 		arr[0] = i;
 		flag = genCombination(arr+1,size-1,base,actSize,clause);
+		printf("flag :%d\n",flag);
 		if(flag==1){
 			return flag;
 		}else if(size==1){				// Size 1 indicates we have reached last element of array
 			flag = boolSat(base,clause);// and hence have generated a particular set of values
+			printf("bool sat : %d\n",boolSat);
 			if(flag==1){
 				return flag;
 			}
@@ -226,31 +231,39 @@ void menuAutomatic(){
 				}
 				
 			}
-
-			for(i=0; i<C; i++){
-				for(j=0; j<N; j++){
-					printf("%d",mat[i][j]);
+			//printa tabela geral
+			// for(i=0; i<C; i++){
+			// 	for(j=0; j<N; j++){
+			// 		printf("%d",mat[i][j]);
 					
-				}printf("\n");
-			}		
+			// 	}printf("\n");
+			// }		
 			
 			int flag =0;
-			int numVar = N, numLine = C;
+			int numVar = N, numLine = 10;
 			
-			int truthVal[15];
+			int truthVal[16];
 			int colum = 0;
 
-			
-			for(i=0; i<C; i++){
-				for(j=0; j<3; j++){
+			//printa tabela de clauses
+			// for(i=0; i<C; i++){
+			// 	for(j=0; j<3; j++){
 					
-					printf("%d",clause[i][j]);
+			// 		printf("%d",clause[i][j]);
 					
-				}printf("\n");
-			}	
+			// 	}printf("\n");
+			// }	
 			
-			// flag = genCombination();	
+			flag = genCombination(truthVal,numVar,truthVal,numVar,clause);	
 			
+			if(flag==0){
+				printf("not satisfiable\n");
+			}else{
+				for(i=0;i<numVar;i++){
+				printf("%d ",truthVal[i]);
+				}
+				printf("\n");
+			}
 		} 
 
 
