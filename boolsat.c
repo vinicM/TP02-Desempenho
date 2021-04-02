@@ -241,14 +241,7 @@ void menuAutomatic(){
 			int truthVal[15];
 			int colum = 0;
 
-			for(i=0;i<numLine;i++){
-				for(j=0;j<N;j++){
-					if(mat[i][j] != 0){
-						clause[i][colum] = mat [i][j];
-						colum ++;
-					}
-				}printf("\n");
-			}
+			
 			for(i=0; i<C; i++){
 				for(j=0; j<3; j++){
 					
