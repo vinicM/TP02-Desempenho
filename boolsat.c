@@ -62,16 +62,16 @@ void escolhaMenu(){
 		printf("----------------------------------------------------------\n");
 		printf("----------------------------------------------------------\n");
 
-		a = getch();
+		a = getchar();
 
 			if(a == 27){
-				system("cls");
+				//system("cls");
 				break;
 			}else if(a == 49){
-				system("cls");
+				//system("cls");	
 								      
 			}else if(a == 50){
-				system("cls");
+				//system("cls");
 				menuAutomatic();
 				break;
 			}
@@ -137,11 +137,11 @@ void menuAutomatic(){
 		printf("----------------------------------------------------------\n");
 
 		int escolha;
-		escolha = getch();
+		scanf("%d", &escolha);
 
-		system("cls");
+		//system("cls");
 
-		if (escolha == 49){
+		if (escolha == 1){
 			int N = 15 ;
 			int C;
 			int randomic1,randomic2,randomic3,test1,test2,test3,counter = 1 ;
@@ -171,30 +171,33 @@ void menuAutomatic(){
 				 	test1++;
 				}
 				mat[i][randomic1] = test1;
+				
 				colum1 = randomic1;
 				
-		
-				
 				randomic2 = rand()%N;
-				while(randomic2 == randomic1){
-					randomic2 = rand()%N;
-				}
+				
 				test2 = rand()%3 ;
+				
 				if(test2 == 0){
 				 	test2++;
 				}
+				if(randomic2 == randomic1){
+					randomic2 = rand()%N;
+				}
+
 				mat[i][randomic2] = test2;
 				colum2 = randomic2;
 				
 				
 				randomic3 = rand()%N;
-				while(randomic3 == randomic2 || randomic3 == randomic1){
-
-					randomic3 = rand()%N;
-				}
+				
 				test3 = rand()%3 ;
 				if(test3 == 0){
 				 	test3++;
+				}
+
+				if(randomic3 == randomic2 || randomic3 == randomic1){
+					randomic3 = rand()%N;
 				}
 				mat[i][randomic3] = test3;
 				colum3 = randomic3;
