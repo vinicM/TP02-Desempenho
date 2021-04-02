@@ -126,6 +126,8 @@ void proximo(char *v, int VAR, int VL) {
 
 void menuAutomatic(){
 		int VAR, VL = 2;
+		int clause[10][3];
+
 		printf("----------------------------------------------------------\n");
 		printf("----------------------------------------------------------\n");
 		printf("                                                          \n");
@@ -143,7 +145,7 @@ void menuAutomatic(){
 		if (escolha == 49){
 			int N = 15 ;
 			int C;
-			int randomic1,randomic2,randomic3,test,counter = 1 ;
+			int randomic1,randomic2,randomic3,test1,test2,test3,counter = 1 ;
 			int i,j,comb = 1;
 			VAR = N;
 			C = (N/3)*2;
@@ -156,37 +158,73 @@ void menuAutomatic(){
 
 			srand(time(0));
 			for(i=0; i<C; i++){
-				
+				int colum1 = 0;
+				int colum2 = 0;
+				int colum3 = 0;
+				int test1 = 0;
+				int test2 = 0;
+				int test3 = 0;
+
+
 				randomic1 = rand()%N;
-				test = rand()%3 ;
-				if(test == 0){
-				 	test++;
+				test1 = rand()%3 ;
+				if(test1 == 0){
+				 	test1++;
 				}
-				mat[i][randomic1] = test;
+				mat[i][randomic1] = test1;
+				colum1 = randomic1;
+				
 		
 				
 				randomic2 = rand()%N;
 				while(randomic2 == randomic1){
 					randomic2 = rand()%N;
 				}
-				test = rand()%3 ;
-				if(test == 0){
-				 	test++;
+				test2 = rand()%3 ;
+				if(test2 == 0){
+				 	test2++;
 				}
-				mat[i][randomic2] = test;
-
+				mat[i][randomic2] = test2;
+				colum2 = randomic2;
+				
 				
 				randomic3 = rand()%N;
 				while(randomic3 == randomic2 || randomic3 == randomic1){
 
 					randomic3 = rand()%N;
 				}
-				test = rand()%3 ;
-				if(test == 0){
-				 	test++;
+				test3 = rand()%3 ;
+				if(test3 == 0){
+				 	test3++;
 				}
-				mat[i][randomic3] = test;
-
+				mat[i][randomic3] = test3;
+				colum3 = randomic3;
+				
+				if(colum1<colum2 && colum2<colum3){
+					clause[i][0] = test1;
+					clause[i][1] = test2;
+					clause[i][2] = test3;
+				}if(colum1<colum3 && colum3<colum2){
+					clause[i][0] = test1;
+					clause[i][1] = test3;
+					clause[i][2] = test2;
+				}if(colum2<colum1 && colum1<colum3){
+					clause[i][0] = test2;
+					clause[i][1] = test1;
+					clause[i][2] = test3;
+				}if(colum2<colum3 && colum3<colum1){
+					clause[i][0] = test2;
+					clause[i][1] = test3;
+					clause[i][2] = test1;
+				}if(colum3<colum2 && colum2<colum1){
+					clause[i][0] = test3;
+					clause[i][1] = test2;
+					clause[i][2] = test1;
+				}if(colum3<colum1 && colum1<colum2){
+					clause[i][0] = test3;
+					clause[i][1] = test1;
+					clause[i][2] = test2;
+				}
 				
 			}
 
@@ -194,44 +232,36 @@ void menuAutomatic(){
 				for(j=0; j<N; j++){
 					printf("%d",mat[i][j]);
 					
-			}printf("\n");
-			}			
+				}printf("\n");
+			}		
+			
+			int flag =0;
+			int numVar = N, numLine = C;
+			
+			int truthVal[15];
+			int colum = 0;
+
+			for(i=0;i<numLine;i++){
+				for(j=0;j<N;j++){
+					if(mat[i][j] != 0){
+						clause[i][colum] = mat [i][j];
+						colum ++;
+					}
+				}printf("\n");
+			}
+			for(i=0; i<C; i++){
+				for(j=0; j<3; j++){
+					
+					printf("%d",clause[i][j]);
+					
+				}printf("\n");
+			}	
+			
+			// flag = genCombination();	
 			
 		} 
 
-	
-	// int i,j;
-	// int flag = 0 ;
-	// int numRandom;
 
-	// scanf("%d",&numVar);
-	// scanf("%d",&numLine);         //ATRIBUIR N =15/30/36/45
-
-	// int truthVal[101];
-	// int clause[101][3];
-
-	// for(i=0;i<numLine;i++){
-	// 	for(j=0;j<3;j++){
-	// 		srand(time(NULL));
-	// 		numRandom = 1 + rand() % (2-1);
-	// 		printf("%d\n", numRandom);
-	// 		clause[i][j] = numRandom;
-	// 	}
-	// }
-
-	// flag = genCombination(truthVal,numVar,truthVal,numVar,clause);
-
-	// if(flag==0){
-	// 	printf("not satisfiable\n");
-	// }else{
-	// 	for(i=0;i<numVar;i++){
-	// 		printf("%d ",truthVal[i]);
-	// 	}
-	// 	printf("\n");
-	// }
-
-	// return 0;
-	
 }
 
 int main(){
