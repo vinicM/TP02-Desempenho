@@ -3,52 +3,7 @@
 #include <time.h>
 #include <string.h>
 
-
-
 int numVar,numLine;
-
-/*	This function returns true if a particular set of values of the given input variables *
- *	satisfies all the given clauses else returns false                                    */
-int boolSat(int* truthValue,int (*clause)[3]){
-	int i,j,val,sum;
-	for(i=0;i<numLine;i++){
-		sum = 0;
-		for(j=0;j<3;j++){
-			val = clause[i][j];
-			if(val > 0){
-				sum = sum + truthValue[val-1];
-			}else{
-				sum = sum + (1 - truthValue[(-1*val)-1]);
-			}
-		}
-		if(sum == 0){	// No need to check other clauses if one of the clause
-			return 0;	// is not satifiable for a particular set of values
-		}
-	}
-	return 1;
-}
-
-//	This function generates the boolean truth table for the given set of input variables
-int genCombination(int *arr,int size,int *base, int (*clause)[3]){
-	int i,flag=0;
-	if(size <= 0){
-		return 0;
-	}
-
-	for(i=0;i<11;i++){
-		arr[0] = i;
-		flag = genCombination(arr+1,size-1,base,clause);
-		if(flag==1){
-			return flag;
-		}else if(size==1){				// Size 1 indicates we have reached last element of array
-			flag = boolSat(base,clause);// and hence have generated a particular set of values
-			if(flag==1){
-				return flag;
-			}
-		}
-	}
-	return flag;
-}
 
 void comb(int *arr, size_t n, size_t index) {
     size_t k;
@@ -88,16 +43,17 @@ void escolhaMenu(){
 		printf("----------------------------------------------------------\n");
 		printf("----------------------------------------------------------\n");
 
-		a = getchar();
+		a = getch();
+		//a = getchar();
 
 			if(a == 27){
-				//system("cls");
+				system("cls");
 				break;
 			}else if(a == 49){
-				//system("cls");	
+				system("cls");	
 								      
 			}else if(a == 50){
-				//system("cls");
+				system("cls");
 				menuAutomatic();
 				break;
 			}
@@ -153,18 +109,18 @@ void menuAutomatic(){
 		printf("----------------------------------------------------------\n");
 
 		int escolha;
-		scanf("%d", &escolha);
+		//scanf("%d", &escolha);
+		escolha = getch();
+		system("cls");
 
-		//system("cls");
-
-		if (escolha == 1){
+		if (escolha == 49){
 			int N = 15 ;
 			int C;
 			int randomic1,randomic2,randomic3,test1,test2,test3,counter = 1 ;
-			int i,j,comb = 1;
+			int i,j;
 			VAR = N;
 			C = (N/3)*2;
-			int mat[11][16];
+			int mat[10][15];
 
    			for(i=0; i<C; i++){
 				for(j=0; j<N; j++)
@@ -266,20 +222,158 @@ void menuAutomatic(){
 					
 					printf("%d",clause[i][j]);
 					
-				}printf("\n");
-			}	
+			// 	}printf("\n");
+			// }	
+			for(i=0; i<C; i++){
+				for(j=0; j<3; j++){
+					
+					if(j==0){
+						printf("( %sa | ",(clause[i][j] == 1 ? "!" : ""));
+					}if(j==1){
+						printf("%sb | ",(clause[i][j] == 1 ? "!" : ""));
+					}if(j==2){
+						printf("%sc )",(clause[i][j] == 1 ? "!" : ""));
+					}
+					
+				}if(i!=(C-1))
+					printf(" & ");
+			}
 			
-			
+			// for(int i=0; i<C; i++){
+        	// 	comb(clause[i], sizeof clause[i] / sizeof *clause[i], 0);
+				
+			// }
 
 
 		} 
+		if (escolha == 50){
+			int N = 30 ;
+			int C;
+			int randomic1,randomic2,randomic3,test1,test2,test3,counter = 1 ;
+			int i,j;
+			VAR = N;
+			C = (N/3)*2;
+			
+			int mat[20][30];
+
+   			for(i=0; i<C; i++){
+				for(j=0; j<N; j++)
+					mat[i][j] = 0;
+			}
+
+			//printa tabela geral
+			// for(i=0; i<C; i++){
+			// 	for(j=0; j<N; j++){
+			// 		printf("%d",mat[i][j]);
+								
+			// 	}printf("\n");
+			// }
+
+			srand(time(0));
+			for(i=0; i<20; i++){
+				int colum1 = 0;
+				int colum2 = 0;
+				int colum3 = 0;
+				int test1 = 0;
+				int test2 = 0;
+				int test3 = 0;
 
 
-}
+				randomic1 = rand()%N;
+				printf("valor do randomic1: %d\n",randomic1);
+				test1 = rand()%3 ;
+				if(test1 == 0){
+				 	test1++;
+				}
+				mat[i][randomic1] = test1;
+				colum1 = randomic1;
+				
 
-int main(){
-	
-	escolhaMenu();
-	return 0;
+				randomic2 = rand()%N;
+				printf("valor do randomic2: %d\n",randomic2);
+				test2 = rand()%3;
+				if(test2 == 0){
+				 	test2++;
+				}
+				while(randomic2 == randomic1){
+					randomic2 = rand()%N;
+				}
+				mat[i][randomic2] = test2;
+				colum2 = randomic2;
+				
+				
+				randomic3 = rand()%N;
+				printf("valor do randomic3: %d\n",randomic3);
+				test3 = rand()%3;
+				if(test3 == 0){
+				 	test3++;
+				}
+				while(randomic3 == randomic2 || randomic3 == randomic1){
+					randomic3 = rand()%N;
+				}
+				mat[i][randomic3] = test3;
+				colum3 = randomic3;
+				
+				if(colum1<colum2 && colum2<colum3){
+					clause[i][0] = test1;
+					clause[i][1] = test2;
+					clause[i][2] = test3;
+				}if(colum1<colum3 && colum3<colum2){
+					clause[i][0] = test1;
+					clause[i][1] = test3;
+					clause[i][2] = test2;
+				}if(colum2<colum1 && colum1<colum3){
+					clause[i][0] = test2;
+					clause[i][1] = test1;
+					clause[i][2] = test3;
+				}if(colum2<colum3 && colum3<colum1){
+					clause[i][0] = test2;
+					clause[i][1] = test3;
+					clause[i][2] = test1;
+				}if(colum3<colum2 && colum2<colum1){
+					clause[i][0] = test3;
+					clause[i][1] = test2;
+					clause[i][2] = test1;
+				}if(colum3<colum1 && colum1<colum2){
+					clause[i][0] = test3;
+					clause[i][1] = test1;
+					clause[i][2] = test2;
+				}
+				
+			}
+				
+
+			//printa tabela de clauses
+			// for(i=0; i<C; i++){
+			// 	for(j=0; j<3; j++){
+					
+			// 		printf("%d",clause[i][j]);
+					
+			// 	}printf("\n");
+			// }	
+			
+			
+			// for(int i=0; i<C; i++){
+        	// 	comb(clause[i], sizeof clause[i] / sizeof *clause[i], 0);
+				
+			// }
+			// for(i=0; i<C; i++){
+			// 	for(j=0; j<3; j++){
+					
+			// 		if(j==0){
+			// 			printf("( %sa | ",(clause[i][j] == 1 ? "!" : ""));
+			// 		}if(j==1){
+			// 			printf("%sb | ",(clause[i][j] == 1 ? "!" : ""));
+			// 		}if(j==2){
+			// 			printf("%sc )",(clause[i][j] == 1 ? "!" : ""));
+			// 		}
+					
+			// 	}if(i!=(C-1))
+			// 		printf(" & ");
+			// }
+
+
+		}
+	}
 
 }
