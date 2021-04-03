@@ -20,12 +20,31 @@ void proximo(char *v, int VAR) {
 // 1 1 1
 // 0 0 0
 
-void verifica(matclau, linha, col)
-{
-
+int verifica(char** mat, int linha, int col, char* clause){
+    int i, j, aux = 0;
+    int flag = 0;
+    for (i = 0; i < linha; i++)
+    {
+        for (j = 0; j < col; j++)
+        {    
+            if (mat[i][j] != 0)
+            {
+                clause[aux] = mat[i][j];
+                aux++;
+            }
+        }
+    }
+    for (i = 0; i < (aux-1); i++)
+    {
+        if (clause[i] == 2)
+        {
+            flag = 1;
+        }
+    }
+    return flag;
 }
 
-void printaLinha(v, col){
+void printaLinha(char v, int col){
 
 }
 
@@ -42,13 +61,13 @@ void percorrer(int VAR) {
     for(i=0; i<linhas; i++) {
         
         // adicionar o resto das verificações
-        if(verifica(matclau,linhas,col,v) == 1){ //verifica se clausula da 1
-            printf("valida");
-            for(j=VAR-1; j>=0; j--) {
-                printf("%d ", v[j]);
-            }
-            printaLinha(v,col);
-        }
+        // if(verifica(matclau,linhas,col,v) == 1){ //verifica se clausula da 1
+        //     printf("valida");
+        //     for(j=VAR-1; j>=0; j--) {
+        //         printf("%d ", v[j]);
+        //     }
+        //     printaLinha(v,col);
+        // }
         printf("\n");
         proximo(v, VAR);
     }
@@ -64,9 +83,18 @@ void manual() {
 
 }
 
+void semPreconceito()
+{
+    #ifdef _WIN32
+        system("cls");
+    #elif __linux__
+        system("clear");
+    #endif
+}
+
 int main() {
     automatico();
-    percorrer(matclau,linhas,col);
+    //percorrer(matclau,linhas,col);
 
     return 0;
 }

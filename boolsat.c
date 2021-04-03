@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <string.h>
+#include "3-sat.h"
 
 int numVar,numLine;
 
@@ -47,13 +44,13 @@ void escolhaMenu(){
 		a = getchar();
 
 			if(a == 27){
-				system("cls");
+				semPreconceito();
 				break;
 			}else if(a == 49){
-				system("cls");	
+				semPreconceito();	
 								      
 			}else if(a == 50){
-				system("cls");
+				semPreconceito();
 				menuAutomatic();
 				break;
 			}
@@ -111,7 +108,7 @@ void menuAutomatic(){
 		int escolha;
 		scanf("%d", &escolha);
 		//escolha = getch();
-		system("cls");
+		semPreconceito();
 
 		if (escolha == 49){
 			int N = 15 ;
