@@ -1,44 +1,60 @@
-#include <stdio.h>
-
-void comb(int *arr, size_t n, size_t index) {
-    size_t k;
-    if (index == n) {
-        /* array vazio, imprime o que está "para trás" */
-        printf("%d", arr[0]);
-        for (k = 1; k < n; k++) printf(" %d", arr[k]);
-        puts("");
-        return;
-    }
-    for (k = index; k < n; k++) {
-        int tmp;
-        /* mete cada um dos elementos ao principio */
-        tmp = arr[k];
-        arr[k] = arr[index];
-        arr[index] = tmp;
-
-        /* recursividade! */
-        comb(arr, n, index + 1);
-
-        /* repoe posicao inicial */
-        tmp = arr[k];
-        arr[k] = arr[index];
-        arr[index] = tmp;
-    }
-}
-int main(void) {
-    int N = 15 ;
-	int C = (N/3)*2;
-    int mat[10][3];
-    for(int i=0; i<10; i++){
-		for(int j=0; j<3; j++)
-		    mat[i][j] = 0;
-	}
-
-
-     for(int i=0; i<10; i++){
-         comb(mat[i], sizeof mat[i] / sizeof *mat[i], 0);
-	 }
-    
-    
-    return 0;
-}
+valor do randomic1: 7
+valor do randomic2: 17
+valor do randomic3: 8
+valor do randomic1: 11
+valor do randomic2: 10
+valor do randomic3: 23
+valor do randomic1: 4
+valor do randomic2: 4
+valor do randomic3: 16
+valor do randomic1: 5
+valor do randomic2: 13
+valor do randomic3: 27
+valor do randomic1: 24
+valor do randomic2: 29
+valor do randomic3: 28
+valor do randomic1: 29
+valor do randomic2: 0
+valor do randomic3: 18
+valor do randomic1: 1
+valor do randomic2: 20
+valor do randomic3: 22
+valor do randomic1: 15
+valor do randomic2: 6
+valor do randomic3: 24
+valor do randomic1: 6
+valor do randomic2: 22
+valor do randomic3: 29
+valor do randomic1: 12
+valor do randomic2: 10
+valor do randomic3: 7
+valor do randomic1: 25
+valor do randomic2: 10
+valor do randomic3: 27
+valor do randomic1: 28
+valor do randomic2: 11
+valor do randomic3: 2
+valor do randomic1: 20
+valor do randomic2: 9
+valor do randomic3: 29
+valor do randomic1: 11
+valor do randomic2: 17
+valor do randomic3: 16
+valor do randomic1: 15
+valor do randomic2: 23
+valor do randomic3: 24
+valor do randomic1: 18
+valor do randomic2: 8
+valor do randomic3: 28
+valor do randomic1: 3
+valor do randomic2: 18
+valor do randomic3: 7
+valor do randomic1: 17
+valor do randomic2: 21
+valor do randomic3: 24
+valor do randomic1: 6
+valor do randomic2: 18
+valor do randomic3: 23
+valor do randomic1: 1
+valor do randomic2: 17
+valor do randomic3: 26
