@@ -3,8 +3,9 @@
 
 int numVar, numLine;
 
-double duration(int function);
-int boolSat(int * truthValue,int (*clause)[3]);
-int genCombination(int *arr,int size,int *base,int actSize, int (*clause)[3]);
+void proximo(char *v, int VAR);
+void percorrer(int VAR);
+void verifica(matclau,linha,col,v);
+void printaLinha(v, col);
 void automatic();
 void manual();
