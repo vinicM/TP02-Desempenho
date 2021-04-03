@@ -11,5 +11,5 @@ int verifica(char** mat,int linha, int col, char* clause);
 void printaLinha(char v, int col);
 void automatic();
 void manual();
-
+// Funcao que identifica o SO do computador do usuario
 void semPreconceito();

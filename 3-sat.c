@@ -82,7 +82,7 @@ void manual() {
 
 
 }
-
+// Funcao que identifica o SO do computador do usuario
 void semPreconceito()
 {
     #ifdef _WIN32
