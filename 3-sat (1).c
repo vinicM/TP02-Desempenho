@@ -20,7 +20,7 @@ void percorrer(int VAR, int VL) {
     for(int i=0; i<VAR; i++) comb *= VL;
 
     int nega=1, negb=2;
-    //printf("(%sa | %sb)\n", (nega == 1 ? "!" : ""), (negb == 1 ? "!" : ""));
+    printf("(%sa | %sb)\n", (nega == 1 ? "!" : ""), (negb == 1 ? "!" : ""));
 
     for(i=0; i<comb; i++) {
         for(j=VAR-1; j>=0; j--) {

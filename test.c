@@ -28,15 +28,16 @@ void comb(int *arr, size_t n, size_t index) {
 int main(void) {
     int N = 15 ;
 	int C = (N/3)*2;
-    int mat[11][16];
-    for(int i=0; i<C; i++){
-		for(int j=0; j<N; j++)
+    int mat[10][3];
+    for(int i=0; i<10; i++){
+		for(int j=0; j<3; j++)
 		    mat[i][j] = 0;
 	}
 
-    for(int i=0; i<C; i++){
-        comb(mat, sizeof mat / sizeof *mat, 0);
-	}
+
+     for(int i=0; i<10; i++){
+         comb(mat[i], sizeof mat[i] / sizeof *mat[i], 0);
+	 }
     
     
     return 0;
