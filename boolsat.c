@@ -9,20 +9,18 @@ int numVar,numLine;
 
 /*	This function returns true if a particular set of values of the given input variables *
  *	satisfies all the given clauses else returns false                                    */
-int boolSat(int * truthValue,int (*clause)[3]){
+int boolSat(int * truthValue,int (clause)[10][3]){
 	int i,j,val,sum;
-	printf("%d", numLine);
-	for(i=0;i<numLine;i++){
+	for(i=0;i<10;i++){
 		sum = 0;
-		
 		for(j=0;j<3;j++){
 			val = clause[i][j];
+			//printf("val : %d\n",val);
 			if(val == 2){
-				
 				sum = sum + truthValue[val-1];
 			}if(val == 1){
 				
-				sum = sum + (truthValue[val+1]);
+				sum = sum + (truthValue[val-1]);
 			}
 		}
 		if(sum == 0){	// No need to check other clauses if one of the clause
@@ -41,18 +39,44 @@ int genCombination(int *arr,int size,int *base,int actSize, int (*clause)[3]){
 	for(i=0;i<2;i++){
 		arr[0] = i;
 		flag = genCombination(arr+1,size-1,base,actSize,clause);
-		printf("flag :%d\n",flag);
+		//printf("flag :%d\n",flag);
 		if(flag==1){
 			return flag;
 		}else if(size==1){				// Size 1 indicates we have reached last element of array
 			flag = boolSat(base,clause);// and hence have generated a particular set of values
-			printf("bool sat : %d\n",boolSat);
+			//printf("flag do boolsat : %d\n",flag);
 			if(flag==1){
 				return flag;
 			}
 		}
 	}
 	return flag;
+}
+
+void comb(int *arr, size_t n, size_t index) {
+    size_t k;
+    if (index == n) {
+        /* array vazio, imprime o que está "para trás" */
+        printf("%d", arr[0]);
+        for (k = 1; k < n; k++) printf(" %d", arr[k]);
+        puts("");
+        return;
+    }
+    for (k = index; k < n; k++) {
+        int tmp;
+        /* mete cada um dos elementos ao principio */
+        tmp = arr[k];
+        arr[k] = arr[index];
+        arr[index] = tmp;
+
+        /* recursividade! */
+        comb(arr, n, index + 1);
+
+        /* repoe posicao inicial */
+        tmp = arr[k];
+        arr[k] = arr[index];
+        arr[index] = tmp;
+    }
 }
 
 void escolhaMenu(){
@@ -117,16 +141,6 @@ void menuManual(){
 
 }
 
-void proximo(char *v, int VAR, int VL) {
-    int i;
-    v[0]++;
-    for(i=0; i<VAR; i++) {
-        if(v[i] == VL) {
-            v[i] = 0;
-            v[i+1]++;
-        }
-    }
-}
 
 void menuAutomatic(){
 		int VAR, VL = 2;
@@ -153,7 +167,7 @@ void menuAutomatic(){
 			int i,j,comb = 1;
 			VAR = N;
 			C = (N/3)*2;
-			char mat[11][16];
+			int mat[11][16];
 
    			for(i=0; i<C; i++){
 				for(j=0; j<N; j++)
@@ -240,7 +254,8 @@ void menuAutomatic(){
 			// }		
 			
 			int flag =0;
-			int numVar = N, numLine = 10;
+			numVar = N;
+			numLine = 10;
 			
 			int truthVal[16];
 			int colum = 0;
@@ -254,16 +269,9 @@ void menuAutomatic(){
 			// 	}printf("\n");
 			// }	
 			
-			flag = genCombination(truthVal,numVar,truthVal,numVar,clause);	
 			
-			if(flag==0){
-				printf("not satisfiable\n");
-			}else{
-				for(i=0;i<numVar;i++){
-				printf("%d ",truthVal[i]);
-				}
-				printf("\n");
-			}
+
+
 		} 
 
 
