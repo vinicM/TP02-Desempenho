@@ -5,31 +5,31 @@
 
 int numVar,numLine;
 
-void comb(int *arr, size_t n, size_t index) {
-    size_t k;
-    if (index == n) {
-        /* array vazio, imprime o que está "para trás" */
-        printf("%d", arr[0]);
-        for (k = 1; k < n; k++) printf(" %d", arr[k]);
-        puts("");
-        return;
-    }
-    for (k = index; k < n; k++) {
-        int tmp;
-        /* mete cada um dos elementos ao principio */
-        tmp = arr[k];
-        arr[k] = arr[index];
-        arr[index] = tmp;
+// void comb(int *arr, size_t n, size_t index) {
+//     size_t k;
+//     if (index == n) {
+//         /* array vazio, imprime o que está "para trás" */
+//         printf("%d", arr[0]);
+//         for (k = 1; k < n; k++) printf(" %d", arr[k]);
+//         puts("");
+//         return;
+//     }
+//     for (k = index; k < n; k++) {
+//         int tmp;
+//         /* mete cada um dos elementos ao principio */
+//         tmp = arr[k];
+//         arr[k] = arr[index];
+//         arr[index] = tmp;
 
-        /* recursividade! */
-        comb(arr, n, index + 1);
+//         /* recursividade! */
+//         comb(arr, n, index + 1);
 
-        /* repoe posicao inicial */
-        tmp = arr[k];
-        arr[k] = arr[index];
-        arr[index] = tmp;
-    }
-}
+//         /* repoe posicao inicial */
+//         tmp = arr[k];
+//         arr[k] = arr[index];
+//         arr[index] = tmp;
+//     }
+// }
 
 void escolhaMenu(){
 	int a;
@@ -97,7 +97,7 @@ void menuManual(){
 
 void menuAutomatic(){
 		int VAR, VL = 2;
-		int clause[10][3];
+		int clause[101][3];
 
 		printf("----------------------------------------------------------\n");
 		printf("----------------------------------------------------------\n");
@@ -255,13 +255,7 @@ void menuAutomatic(){
 					mat[i][j] = 0;
 			}
 
-			//printa tabela geral
-			// for(i=0; i<C; i++){
-			// 	for(j=0; j<N; j++){
-			// 		printf("%d",mat[i][j]);
-								
-			// 	}printf("\n");
-			// }
+			
 
 			srand(time(0));
 			for(i=0; i<C; i++){
@@ -274,7 +268,7 @@ void menuAutomatic(){
 
 
 				randomic1 = rand()%N;
-				printf("valor do randomic1: %d\n",randomic1);
+				
 				test1 = rand()%3 ;
 				if(test1 == 0){
 				 	test1++;
@@ -284,7 +278,7 @@ void menuAutomatic(){
 				
 
 				randomic2 = rand()%N;
-				printf("valor do randomic2: %d\n",randomic2);
+				
 				test2 = rand()%3 ;
 				if(test2 == 0){
 				 	test2++;
@@ -297,7 +291,7 @@ void menuAutomatic(){
 				
 				
 				randomic3 = rand()%N;
-				printf("valor do randomic3: %d\n",randomic3);
+				
 				test3 = rand()%3 ;
 				if(test3 == 0){
 				 	test3++;
@@ -335,7 +329,13 @@ void menuAutomatic(){
 				}
 				
 			}
-				
+			//printa tabela geral
+			for(i=0; i<C; i++){
+				for(j=0; j<N; j++){
+					printf("%d",mat[i][j]);
+								
+				}printf("\n");
+			}	
 
 			//printa tabela de clauses
 			// for(i=0; i<C; i++){
@@ -347,25 +347,11 @@ void menuAutomatic(){
 			// }	
 			
 			
-			// for(int i=0; i<C; i++){
-        	// 	comb(clause[i], sizeof clause[i] / sizeof *clause[i], 0);
-				
-			// }
-			// for(i=0; i<C; i++){
-			// 	for(j=0; j<3; j++){
-					
-			// 		if(j==0){
-			// 			printf("( %sa | ",(clause[i][j] == 1 ? "!" : ""));
-			// 		}if(j==1){
-			// 			printf("%sb | ",(clause[i][j] == 1 ? "!" : ""));
-			// 		}if(j==2){
-			// 			printf("%sc )",(clause[i][j] == 1 ? "!" : ""));
-			// 		}
-					
-			// 	}if(i!=(C-1))
-			// 		printf(" & ");
-			// }
-
+			for(int i=0; i<C; i++){
+        		comb(clause[i], sizeof clause[i] / sizeof *clause[i], 0); // gera permutações
+			}
+		
+			// 'a'+ rand%N
 
 		}
 		
