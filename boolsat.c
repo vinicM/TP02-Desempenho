@@ -43,8 +43,8 @@ void escolhaMenu(){
 		printf("----------------------------------------------------------\n");
 		printf("----------------------------------------------------------\n");
 
-		a = getch();
-		//a = getchar();
+		//a = getch();
+		a = getchar();
 
 			if(a == 27){
 				system("cls");
@@ -109,8 +109,8 @@ void menuAutomatic(){
 		printf("----------------------------------------------------------\n");
 
 		int escolha;
-		//scanf("%d", &escolha);
-		escolha = getch();
+		scanf("%d", &escolha);
+		//escolha = getch();
 		system("cls");
 
 		if (escolha == 49){
@@ -240,10 +240,10 @@ void menuAutomatic(){
 
 
 		} 
-		if (escolha == 50){
+		if (escolha == 50 || escolha == 2){
 			int N = 30 ;
 			int C;
-			int randomic1,randomic2,randomic3,test1,test2,test3,counter = 1 ;
+			int randomic1,randomic2,randomic3,test1,test2,test3;
 			int i,j;
 			VAR = N;
 			C = (N/3)*2;
@@ -338,13 +338,13 @@ void menuAutomatic(){
 			}	
 
 			//printa tabela de clauses
-			// for(i=0; i<C; i++){
-			// 	for(j=0; j<3; j++){
+			for(i=0; i<C; i++){
+				for(j=0; j<3; j++){
 					
-			// 		printf("%d",clause[i][j]);
+					printf("%d",clause[i][j]);
 					
-			// 	}printf("\n");
-			// }	
+				}printf("\n");
+			}	
 			
 			
 			for(int i=0; i<C; i++){
