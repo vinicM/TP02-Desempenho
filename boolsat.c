@@ -9,20 +9,16 @@ int numVar,numLine;
 
 /*	This function returns true if a particular set of values of the given input variables *
  *	satisfies all the given clauses else returns false                                    */
-int boolSat(int * truthValue,int (*clause)[3]){
+int boolSat(int* truthValue,int (*clause)[3]){
 	int i,j,val,sum;
-	printf("%d", numLine);
 	for(i=0;i<numLine;i++){
 		sum = 0;
-		
 		for(j=0;j<3;j++){
 			val = clause[i][j];
-			if(val == 2){
-				
+			if(val > 0){
 				sum = sum + truthValue[val-1];
-			}if(val == 1){
-				
-				sum = sum + (truthValue[val+1]);
+			}else{
+				sum = sum + (1 - truthValue[(-1*val)-1]);
 			}
 		}
 		if(sum == 0){	// No need to check other clauses if one of the clause
@@ -33,20 +29,19 @@ int boolSat(int * truthValue,int (*clause)[3]){
 }
 
 //	This function generates the boolean truth table for the given set of input variables
-int genCombination(int *arr,int size,int *base,int actSize, int (*clause)[3]){
+int genCombination(int *arr,int size,int *base, int (*clause)[3]){
 	int i,flag=0;
 	if(size <= 0){
 		return 0;
 	}
-	for(i=0;i<2;i++){
+
+	for(i=0;i<11;i++){
 		arr[0] = i;
-		flag = genCombination(arr+1,size-1,base,actSize,clause);
-		printf("flag :%d\n",flag);
+		flag = genCombination(arr+1,size-1,base,clause);
 		if(flag==1){
 			return flag;
 		}else if(size==1){				// Size 1 indicates we have reached last element of array
 			flag = boolSat(base,clause);// and hence have generated a particular set of values
-			printf("bool sat : %d\n",boolSat);
 			if(flag==1){
 				return flag;
 			}
@@ -186,7 +181,7 @@ void menuAutomatic(){
 				if(test2 == 0){
 				 	test2++;
 				}
-				if(randomic2 == randomic1){
+				while(randomic2 == randomic1){
 					randomic2 = rand()%N;
 				}
 
@@ -201,7 +196,7 @@ void menuAutomatic(){
 				 	test3++;
 				}
 
-				if(randomic3 == randomic2 || randomic3 == randomic1){
+				while(randomic3 == randomic2 || randomic3 == randomic1){
 					randomic3 = rand()%N;
 				}
 				mat[i][randomic3] = test3;
@@ -235,29 +230,29 @@ void menuAutomatic(){
 				
 			}
 			//printa tabela geral
-			// for(i=0; i<C; i++){
-			// 	for(j=0; j<N; j++){
-			// 		printf("%d",mat[i][j]);
+			 for(i=0; i<C; i++){
+			 	for(j=0; j<N; j++){
+			 		printf("%d",mat[i][j]);
 					
-			// 	}printf("\n");
-			// }		
+			 	}printf("\n");
+			 }		
 			
 			int flag =0;
 			int numVar = N, numLine = 10;
 			
-			int truthVal[16];
+			int truthVal[11];
 			int colum = 0;
 
 			//printa tabela de clauses
-			// for(i=0; i<C; i++){
-			// 	for(j=0; j<3; j++){
+			for(i=0; i<C; i++){
+				for(j=0; j<3; j++){
 					
-			// 		printf("%d",clause[i][j]);
+					printf("%d",clause[i][j]);
 					
-			// 	}printf("\n");
-			// }	
+				}printf("\n");
+			}	
 			
-			flag = genCombination(truthVal,numVar,truthVal,numVar,clause);	
+			flag = genCombination(truthVal,numVar,truthVal,clause);	
 			
 			if(flag==0){
 				printf("not satisfiable\n");
