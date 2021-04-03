@@ -202,25 +202,19 @@ void menuAutomatic(){
 				
 			}
 			//printa tabela geral
-			 for(i=0; i<C; i++){
-			 	for(j=0; j<N; j++){
-			 		printf("%d",mat[i][j]);
+			// for(i=0; i<C; i++){
+			// 	for(j=0; j<N; j++){
+			// 		printf("%d",mat[i][j]);
 					
-			 	}printf("\n");
-			 }		
+			// 	}printf("\n");
+			// }		
 			
-			int flag =0;
-			numVar = N;
-			numLine = 10;
-			
-			int truthVal[11];
-			int colum = 0;
 
 			//printa tabela de clauses
-			for(i=0; i<C; i++){
-				for(j=0; j<3; j++){
+			// for(i=0; i<C; i++){
+			// 	for(j=0; j<3; j++){
 					
-					printf("%d",clause[i][j]);
+			// 		printf("%d",clause[i][j]);
 					
 			// 	}printf("\n");
 			// }	
@@ -270,7 +264,7 @@ void menuAutomatic(){
 			// }
 
 			srand(time(0));
-			for(i=0; i<20; i++){
+			for(i=0; i<C; i++){
 				int colum1 = 0;
 				int colum2 = 0;
 				int colum3 = 0;
