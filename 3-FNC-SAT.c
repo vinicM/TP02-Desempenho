@@ -91,10 +91,28 @@ void printalinha(int* v, int colums){
 	}
 }
 
-int verifica(int* mat, int linha, int colum, int* vetorlinha){
-
-	
-
+int verifica(char** mat, int linha, int col, char* clause){
+	int i, j, aux = 0;
+    int flag = 0;
+    for (i = 0; i < linha; i++)
+    {
+        for (j = 0; j < col; j++)
+        {    
+            if (mat[i][j] != 0)
+            {
+                clause[aux] = mat[i][j];
+                aux++;
+            }
+        }
+    }
+    for (i = 0; i < (aux-1); i++)
+    {
+        if (clause[i] == 2)
+        {
+            flag = 1;
+        }
+    }
+    return flag;
 }
 
 void percorrer(int* mat, int linhas, int colums) {
