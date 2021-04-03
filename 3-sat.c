@@ -30,7 +30,7 @@ void printaLinha(v, col){
 }
 
 void percorrer(int VAR) {
-    char v[101];
+    char v[101]; /* int declarado como char para economizar espaço */
     for(int i=0; i<VAR; i++) v[i] = 0;
     int i, j;
     long long linhas=1;
