@@ -4,7 +4,7 @@
 #include <string.h>
 
 void geraclauses(int N){
-         ;
+         printf("entrei na geraclauses\n");
 			int C;
 			int randomic1,randomic2,randomic3,test1,test2,test3,counter = 1 ;
 			int i,j;
@@ -66,7 +66,8 @@ void geraclauses(int N){
 					printf("%d",mat[i][j]);
 					
 				}printf("\n");
-			}		
+			}
+			percorrer(mat[101][50],C,N);
 }
 
 void proximo(char *v, int N) {
@@ -82,30 +83,39 @@ void proximo(char *v, int N) {
 
 void printalinha(int v[101], int colums){
 
-
+	int i,j;
+	int coluna1, coluna2, coluna3;
+	
+	for(i = 0; i<colums ; i++){
+		printf("( %s'a'+   ");
+	}
 
 }
 
 int verifica(int mat[101][50], int linha, int colum, int vetorlinha[101]){
 
-    if(mat[linha][colum] == 2){
-
-    }
 
 }
 
-void percorrer(int* mat, int linhas, int colums) {
+void percorrer(int mat[101][50], long long int linhas, int colums) {
+    
     char v[101];
+	int linhasdamat[101];
     for(int i=0; i<colums; i++) v[i] = 0;
     int i, j;
-    long long linhas=1;
+    linhas = 1;
     for(int i=0; i<colums; i++) linhas *= 2;
 
+	for(int i=0; i<colums; i++) linhasdamat[i] = 0;
+	printf("aqui");
+
+	
 
     for(i=0; i<linhas; i++) {
         
         // adicionar o resto das verificações
-        if(verifica(mat,linhas,colums,v) == 1){ //verifica se clausula da 1
+		//verifica se clausula da 1
+        if(verifica(mat,linhas,colums,v) == 1){ 
             printalinha(v,colums);
         }
         printf("\n");
@@ -174,7 +184,6 @@ void menuAutomatic(){
             N = 15;
             C = (N/3)*2;
             geraclauses(N);
-            percorrer(mat,C,N);
 
 			
 		} 
