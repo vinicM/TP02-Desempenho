@@ -50,6 +50,32 @@ int genCombination(int *arr,int size,int *base, int (*clause)[3]){
 	return flag;
 }
 
+void comb(int *arr, size_t n, size_t index) {
+    size_t k;
+    if (index == n) {
+        /* array vazio, imprime o que está "para trás" */
+        printf("%d", arr[0]);
+        for (k = 1; k < n; k++) printf(" %d", arr[k]);
+        puts("");
+        return;
+    }
+    for (k = index; k < n; k++) {
+        int tmp;
+        /* mete cada um dos elementos ao principio */
+        tmp = arr[k];
+        arr[k] = arr[index];
+        arr[index] = tmp;
+
+        /* recursividade! */
+        comb(arr, n, index + 1);
+
+        /* repoe posicao inicial */
+        tmp = arr[k];
+        arr[k] = arr[index];
+        arr[index] = tmp;
+    }
+}
+
 void escolhaMenu(){
 	int a;
 	while(1){
@@ -112,16 +138,6 @@ void menuManual(){
 
 }
 
-void proximo(char *v, int VAR, int VL) {
-    int i;
-    v[0]++;
-    for(i=0; i<VAR; i++) {
-        if(v[i] == VL) {
-            v[i] = 0;
-            v[i+1]++;
-        }
-    }
-}
 
 void menuAutomatic(){
 		int VAR, VL = 2;
@@ -148,7 +164,7 @@ void menuAutomatic(){
 			int i,j,comb = 1;
 			VAR = N;
 			C = (N/3)*2;
-			char mat[11][16];
+			int mat[11][16];
 
    			for(i=0; i<C; i++){
 				for(j=0; j<N; j++)
@@ -238,7 +254,8 @@ void menuAutomatic(){
 			 }		
 			
 			int flag =0;
-			int numVar = N, numLine = 10;
+			numVar = N;
+			numLine = 10;
 			
 			int truthVal[11];
 			int colum = 0;
@@ -252,16 +269,9 @@ void menuAutomatic(){
 				}printf("\n");
 			}	
 			
-			flag = genCombination(truthVal,numVar,truthVal,clause);	
 			
-			if(flag==0){
-				printf("not satisfiable\n");
-			}else{
-				for(i=0;i<numVar;i++){
-				printf("%d ",truthVal[i]);
-				}
-				printf("\n");
-			}
+
+
 		} 
 
 
