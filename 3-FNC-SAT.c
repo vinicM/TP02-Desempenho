@@ -61,13 +61,13 @@ void geraclauses(int N){
 				
 			}
 			//printa tabela geral
-			for(i=0; i<C; i++){
-				for(j=0; j<N; j++){
-					printf("%d",mat[i][j]);
+			// for(i=0; i<C; i++){
+			// 	for(j=0; j<N; j++){
+			// 		printf("%d",mat[i][j]);
 					
-				}printf("\n");
-			}
-			percorrer(mat[101][50],C,N);
+			// 	}printf("\n");
+			// }
+			
 }
 
 void proximo(char *v, int N) {
@@ -81,44 +81,38 @@ void proximo(char *v, int N) {
     }
 }
 
-void printalinha(int v[101], int colums){
+void printalinha(int* v, int colums){
 
 	int i,j;
 	int coluna1, coluna2, coluna3;
 	
 	for(i = 0; i<colums ; i++){
-		printf("( %s'a'+   ");
+		printf("%d",v[i]);
 	}
-
 }
 
-int verifica(int mat[101][50], int linha, int colum, int vetorlinha[101]){
-
-
-}
-
-void percorrer(int mat[101][50], long long int linhas, int colums) {
-    
-    char v[101];
-	int linhasdamat[101];
-    for(int i=0; i<colums; i++) v[i] = 0;
-    int i, j;
-    linhas = 1;
-    for(int i=0; i<colums; i++) linhas *= 2;
-
-	for(int i=0; i<colums; i++) linhasdamat[i] = 0;
-	printf("aqui");
+int verifica(int* mat, int linha, int colum, int* vetorlinha){
 
 	
 
-    for(i=0; i<linhas; i++) {
-        
+}
+
+void percorrer(int* mat, int linhas, int colums) {
+    
+    char v[101];
+    for(int i=0; i<colums; i++) v[i] = 0;
+    int i, j;
+    long long int linhasdacomb = 1;
+    for(int i=0; i<colums; i++) linhasdacomb *= 2;
+
+	
+    for(i=0; i<linhasdacomb; i++) {
         // adicionar o resto das verificações
 		//verifica se clausula da 1
         if(verifica(mat,linhas,colums,v) == 1){ 
             printalinha(v,colums);
         }
-        printf("\n");
+        //printf("\n");
         proximo(v, colums);
     }
 }
@@ -184,7 +178,7 @@ void menuAutomatic(){
             N = 15;
             C = (N/3)*2;
             geraclauses(N);
-
+			percorrer(mat,C,N);
 			
 		} 
 		if (escolha == 50 || escolha == 2){
