@@ -44,9 +44,13 @@ int verifica(char** mat, int linha, int col, char* clause){
     return flag;
 }
 
-void printaLinha(char v, int col){
-
+void printaLinha(char* v,int linha){
+	int i;
+	for(i =0; i <= linha; i++){
+	print("%d",v[i]);
+	}
 }
+
 
 void percorrer(int VAR) {
     char v[101]; /* int declarado como char para economizar espaço */
