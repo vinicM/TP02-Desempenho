@@ -34,7 +34,7 @@ int verifica(char** mat, int linha, int col, char* clause){
             }
         }
     }
-    for (i = 0; i < (aux-1); i++)
+    for (i = 0; i < aux; i++)
     {
         if (clause[i] == 2)
         {
