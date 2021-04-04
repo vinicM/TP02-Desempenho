@@ -3,6 +3,15 @@
 #include <time.h>
 #include <string.h>
 
+void semPreconceito()
+{
+    #ifdef _WIN32
+        system("cls");
+    #elif __linux__
+        system("clear");
+    #endif
+}
+
 void geraclauses(int N){
          printf("entrei na geraclauses\n");
 			int C;
@@ -125,9 +134,11 @@ void percorrer(int* mat, int linhas, int colums) {
 
 	
     for(i=0; i<linhasdacomb; i++) {
+		printf("...");
         // adicionar o resto das verificações
 		//verifica se clausula da 1
         if(verifica(mat,linhas,colums,v) == 1){ 
+			
             printalinha(v,colums);
         }
         //printf("\n");
