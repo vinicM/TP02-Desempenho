@@ -230,10 +230,10 @@ void menuAutomatic(){
 					printf(" & ");
 			}
 			
-			// for(int i=0; i<C; i++){
-        	// 	comb(clause[i], sizeof clause[i] / sizeof *clause[i], 0);
-				
-			// }
+			for(int i=0; i<C; i++){
+        		//comb(clause[i], sizeof clause[i] / sizeof *clause[i], 0);
+				printCombination(clause[i], N, 3);
+			}
 
 
 		} 
