@@ -1,10 +1,10 @@
 #include "3-sat.h"
 
-int main(){
-	
+int main()
+{
+
 	escolhaMenu();
 	return 0;
-
 }
 
 // int main()
