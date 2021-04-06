@@ -2,32 +2,6 @@
 
 int numVar,numLine;
 
-// void comb(int *arr, size_t n, size_t index) {
-//     size_t k;
-//     if (index == n) {
-//         /* array vazio, imprime o que está "para trás" */
-//         printf("%d", arr[0]);
-//         for (k = 1; k < n; k++) printf(" %d", arr[k]);
-//         puts("");
-//         return;
-//     }
-//     for (k = index; k < n; k++) {
-//         int tmp;
-//         /* mete cada um dos elementos ao principio */
-//         tmp = arr[k];
-//         arr[k] = arr[index];
-//         arr[index] = tmp;
-
-//         /* recursividade! */
-//         comb(arr, n, index + 1);
-
-//         /* repoe posicao inicial */
-//         tmp = arr[k];
-//         arr[k] = arr[index];
-//         arr[index] = tmp;
-//     }
-// }
-
 void escolhaMenu(){
 	int a;
 	while(1){
@@ -48,7 +22,7 @@ void escolhaMenu(){
 				break;
 			}else if(a == 49){
 				semPreconceito();	
-								      
+				break;  
 			}else if(a == 50){
 				semPreconceito();
 				menuAutomatic();
@@ -100,7 +74,7 @@ void menuAutomatic(){
 		printf("----------------------------------------------------------\n");
 		printf("                                                          \n");
 		printf("            Escolha qual valor para N deseja  :           \n");
-		printf("     1 - 15        2 - 30        3 - 36        4 - 45     \n");
+		printf("     1 - 15        2 - 20        3 - 30        4 - 40     \n");
 		printf("                                                          \n");
 		printf("----------------------------------------------------------\n");
 		printf("----------------------------------------------------------\n");
@@ -110,14 +84,14 @@ void menuAutomatic(){
 		//escolha = getch();
 		semPreconceito();
 
-		if (escolha == 49){
+		if (escolha == 49 || escolha == 1){
 			int N = 15 ;
 			int C;
-			int randomic1,randomic2,randomic3,test1,test2,test3,counter = 1 ;
+			int randomic1,randomic2,randomic3,test1,test2,test3;
 			int i,j;
 			VAR = N;
 			C = (N/3)*2;
-			int mat[10][15];
+			int mat[C][N];
 
    			for(i=0; i<C; i++){
 				for(j=0; j<N; j++)
@@ -199,45 +173,35 @@ void menuAutomatic(){
 				
 			}
 			//printa tabela geral
-			// for(i=0; i<C; i++){
-			// 	for(j=0; j<N; j++){
-			// 		printf("%d",mat[i][j]);
+			for(i=0; i<C; i++){
+				for(j=0; j<N; j++){
+					printf("%d",mat[i][j]);
 					
-			// 	}printf("\n");
-			// }		
+				}printf("\n");
+			}		
 			
-
-			//printa tabela de clauses
+	
 			// for(i=0; i<C; i++){
 			// 	for(j=0; j<3; j++){
 					
-			// 		printf("%d",clause[i][j]);
+			// 		if(j==0){
+			// 			printf("( %sa | ",(clause[i][j] == 1 ? "!" : ""));
+			// 		}if(j==1){
+			// 			printf("%sb | ",(clause[i][j] == 1 ? "!" : ""));
+			// 		}if(j==2){
+			// 			printf("%sc )",(clause[i][j] == 1 ? "!" : ""));
+			// 		}
 					
-			// 	}printf("\n");
-			// }	
-			for(i=0; i<C; i++){
-				for(j=0; j<3; j++){
-					
-					if(j==0){
-						printf("( %sa | ",(clause[i][j] == 1 ? "!" : ""));
-					}if(j==1){
-						printf("%sb | ",(clause[i][j] == 1 ? "!" : ""));
-					}if(j==2){
-						printf("%sc )",(clause[i][j] == 1 ? "!" : ""));
-					}
-					
-				}if(i!=(C-1))
-					printf(" & ");
-			}
+			// 	}if(i!=(C-1))
+			// 		printf(" & ");
+			// }
 			
-			for(int i=0; i<C; i++){
-        		//comb(clause[i], sizeof clause[i] / sizeof *clause[i], 0);
-				printCombination(clause[i], N, 3);
-			}
+			printCombination(clause, C, 3);
+			
 
 
 		} 
-		if (escolha == 50 || escolha == 2){
+		if (escolha == 3){
 			int N = 30 ;
 			int C;
 			int randomic1,randomic2,randomic3,test1,test2,test3;
@@ -245,7 +209,7 @@ void menuAutomatic(){
 			VAR = N;
 			C = (N/3)*2;
 			
-			int mat[20][30];
+			int mat[C][N];
 
    			for(i=0; i<C; i++){
 				for(j=0; j<N; j++)
@@ -329,8 +293,7 @@ void menuAutomatic(){
 			//printa tabela geral
 			for(i=0; i<C; i++){
 				for(j=0; j<N; j++){
-					printf("%d",mat[i][j]);
-								
+					printf("%d",mat[i][j]);		
 				}printf("\n");
 			}	
 
@@ -343,21 +306,8 @@ void menuAutomatic(){
 				}printf("\n");
 			}	
 			
-			
-			for(int i=0; i<C; i++){
-        		comb(clause[i], sizeof clause[i] / sizeof *clause[i], 0); // gera permutações
-			}
+			printCombination(clause, C, 3);
 		
-			// 'a'+ rand%N
-
-		}
-		
-
-}
-
-int main(){
-	
-	escolhaMenu();
-	return 0;
+		}		
 
 }

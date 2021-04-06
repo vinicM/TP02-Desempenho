@@ -81,6 +81,7 @@ void percorrer(int VAR) {
 // Algoritmo para a combinacao
 void combinationUtil(int* arr, int n, int r, int index, int* data, int i)
 {
+    int count = 0;
     // Current cobination is ready, print it
     if (index == r)
     {
@@ -131,9 +132,9 @@ void semPreconceito()
     #endif
 }
 
-int main() {
-    automatico();
-    //percorrer(matclau,linhas,col);
+// int main() {
+//     automatico();
+//     //percorrer(matclau,linhas,col);
 
-    return 0;
-}
+//     return 0;
+// }
