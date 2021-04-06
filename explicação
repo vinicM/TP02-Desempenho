@@ -1,0 +1,26 @@
+exemplo de matriz:
+
+212
+111
+112
+121
+111
+211
+222
+212
+
+combinações:
+
+linha1: 
+2 1 2 = 0 0 0       ou seja 2 que é verdadeiro vai ser negado, então vira 1
+                    1 que ja é negado, inverte e fica verdadeiro, então vira 2
+                    2 que é verdadeiro vai ser negado, então vira 1
+
+
+                    resultado final 1 | 2 | 1
+
+
+
+
+fazer um for atribuindo todos os valores da tabela verdade pra clausula
+função pra isso (atribui)
