@@ -181,13 +181,13 @@ void escolhaMenu(){
 		//a = getchar();
 
 			if(a == 27){
-				system("cls");
+				semPreconceito();
 				break;
 			}else if(a == 49){
-				system("cls");	
+				semPreconceito();	
 								      
 			}else if(a == 50){
-				system("cls");
+				semPreconceito();
 				menuAutomatic();
 				break;
 			}
@@ -216,9 +216,9 @@ void menuAutomatic(){
 		printf("----------------------------------------------------------\n");
 
 		int escolha;
-		//scanf("%d", &escolha);
+		scanf("%d", &escolha);
 		escolha = getch();
-		system("cls");
+		semPreconceito();
 
 		if (escolha == 49 || escolha == 1){
 			int mat[100][50];
