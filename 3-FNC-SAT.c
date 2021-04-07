@@ -132,7 +132,7 @@ int verifica(char** mat, int linha, int col, char* clause){
 int percorrer(int (*mat)[50], int VAR, int VL, int N, int C) {
     char v[101];
     for(int i=0; i<VAR; i++) v[i] = 0;
-    int i, j, comb=1;
+    int i, j, k, l, comb=1;
     for(int i=0; i<VAR; i++) comb *= VL;
 	int col;
 
@@ -153,16 +153,27 @@ int percorrer(int (*mat)[50], int VAR, int VL, int N, int C) {
 	printf("TABELA DAS COMBINACOES:\n");
     for(i=0; i<comb; i++) {
         for(j=VAR-1; j>=0; j--) {
-
-            printf("%d",v[j]);
+			for(k=0; k<C; k++){
+				printf("(");
+				col = 0;
+				for(l=0; l<N; l++){
+					if(mat[k][l] != 0){
+						if(v[j]==0){
+							printf(" %sx%d %s", (mat[k][l] == 2 ? "!" : ""),(l+1),(col < 2 ? "|" : ")"));
+							col++;
+						}else{
+							printf(" %sx%d %s", (mat[k][l] == 2 ? "!" : ""),(l+1),(col < 2 ? "|" : ")"));
+							col++;
+						}
+					}	
+				}printf("\n");
+			}
         }
         // adicionar o resto das verificações
         printf("\n");
         proximo(v, VAR, VL);
     }
 
-
-	
 }
 
 void escolhaMenu(){

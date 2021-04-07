@@ -63,3 +63,4 @@ void percorrer(int* mat, int linhas, int colums) {
         proximo(v, colums);
     }
 }
+
