@@ -10,6 +10,12 @@ void semPreconceito()
     #elif __linux__
         system("clear");
     #endif
+
+	#ifdef _WIN32
+		getch();
+	#elif __linux__
+		getchar();
+	#endif
 }
 
 void geraclauses(int (*mat)[50],int N){
@@ -169,8 +175,8 @@ void escolhaMenu(){
 		printf("----------------------------------------------------------\n");
 		printf("----------------------------------------------------------\n");
 
-		//a = getch();
-		a = getchar();
+		a = getch();
+		//a = getchar();
 
 			if(a == 27){
 				system("cls");
@@ -208,8 +214,8 @@ void menuAutomatic(){
 		printf("----------------------------------------------------------\n");
 
 		int escolha;
-		scanf("%d", &escolha);
-		//escolha = getch();
+		//scanf("%d", &escolha);
+		escolha = getch();
 		system("cls");
 
 		if (escolha == 49 || escolha == 1){
