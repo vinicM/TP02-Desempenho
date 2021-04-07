@@ -150,7 +150,7 @@ int percorrer(int (*mat)[50], int VAR, int VL, int N, int C) {
 	// }
 
 
-	printf("TABELA DAS COMBINACOES:\n");
+	printf("TABELA DE TODAS AS COMBINACOES:\n");
     for(i=0; i<comb; i++) {
 		for(k = 0; k<C; k++){
 			col = 0;
