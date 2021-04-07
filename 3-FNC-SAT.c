@@ -73,7 +73,7 @@ void geraclauses(int (*mat)[50],int N){
 				mat[i][randomic3] = test3;
 				
 			}
-			atribui(mat,N,C);
+			percorrer(mat,3,2,N,C);
 			//printa tabela geral
 			// for(i=0; i<C; i++){
 			// 	for(j=0; j<N; j++){
@@ -129,38 +129,40 @@ int verifica(char** mat, int linha, int col, char* clause){
     return flag;
 }
 
-int percorrer(int VAR, int VL) {
+int percorrer(int (*mat)[50], int VAR, int VL, int N, int C) {
     char v[101];
     for(int i=0; i<VAR; i++) v[i] = 0;
     int i, j, comb=1;
     for(int i=0; i<VAR; i++) comb *= VL;
+	int col;
 
-    // int nega=1, negb=2;
-    // printf("(%sa | %sb)\n", (nega == 1 ? "!" : ""), (negb == 1 ? "!" : ""));
-
-    for(i=0; i<comb; i++) {
-        for(j=VAR-1; j>=0; j--) {
-            return v[j];
-        }
-        // adicionar o resto das verificações
-        //printf("\n");
-        proximo(v, VAR, VL);
-    }
-	
-}
-
-void atribui(int (*mat)[50], int N, int C){
-	int i,j;
-	printf("N: %d\n",N);
-	printf("C: %d\n",C);
+	printf(" TABELA ORIGINAL: \n");
 	for(i=0; i<C; i++){
+		printf("(");
+		col = 0;
 		for(j=0; j<N; j++){
-			printf("%d",mat[i][j]);
-					
-		}printf("\n");
+			if(mat[i][j] != 0){
+				printf(" %sx%d %s", (mat[i][j] == 1 ? "!" : ""),(j+1),(col < 2 ? "|" : ")"));
+				col++;
+			}	
+		}
+		printf("\n");
 	}
 
 
+	printf("TABELA DAS COMBINACOES:\n");
+    for(i=0; i<comb; i++) {
+        for(j=VAR-1; j>=0; j--) {
+
+            printf("%d",v[j]);
+        }
+        // adicionar o resto das verificações
+        printf("\n");
+        proximo(v, VAR, VL);
+    }
+
+
+	
 }
 
 void escolhaMenu(){
@@ -225,7 +227,7 @@ void menuAutomatic(){
             C = (N/3)*2;
             geraclauses(mat, N);
 			//percorrer(3,2);
-			atribui(mat,N,C);
+			//atribui(mat,N,C);
 		} 
 		if (escolha == 50 || escolha == 2){
 			
