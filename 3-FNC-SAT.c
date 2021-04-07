@@ -75,12 +75,12 @@ void geraclauses(int (*mat)[50],int N){
 			}
 			percorrer(mat,3,2,N,C);
 			//printa tabela geral
-			// for(i=0; i<C; i++){
-			// 	for(j=0; j<N; j++){
-			// 		printf("%d",mat[i][j]);
+			for(i=0; i<C; i++){
+				for(j=0; j<N; j++){
+					printf("%d",mat[i][j]);
 					
-			// 	}printf("\n");
-			// }
+				}printf("\n");
+			}
 			
 }
 
@@ -150,29 +150,29 @@ int percorrer(int (*mat)[50], int VAR, int VL, int N, int C) {
 	}
 
 
-	// printf("TABELA DAS COMBINACOES:\n");
-    // for(i=0; i<comb; i++) {
-    //     for(j=VAR-1; j>=0; j--) {
-	// 		for(k=0; k<C; k++){
-	// 			printf("(");
-	// 			col = 0;
-	// 			for(l=0; l<N; l++){
-	// 				if(mat[k][l] != 0){
-	// 					if(v[j]==0){
-	// 						printf(" %sx%d %s", (mat[k][l] == 2 ? "!" : ""),(l+1),(col < 2 ? "|" : ")"));
-	// 						col++;
-	// 					}else{
-	// 						printf(" %sx%d %s", (mat[k][l] == 2 ? "!" : ""),(l+1),(col < 2 ? "|" : ")"));
-	// 						col++;
-	// 					}
-	// 				}	
-	// 			}printf("\n");
-	// 		}
-    //     }
+	printf("TABELA DAS COMBINACOES:\n");
+    for(i=0; i<comb; i++) {
+        for(j=VAR-1; j>=0; j--) {
+			for(k=0; k<C; k++){
+				printf("(");
+				col = 0;
+				for(l=0; l<N; l++){
+					if(mat[k][l] != 0){
+						if(v[j]==0){
+							printf(" %sx%d %s", (mat[k][l] == 2 ? "!" : ""),(l+1),(col < 2 ? "|" : ")"));
+							col++;
+						}else{
+							printf(" %sx%d %s", (mat[k][l] == 2 ? "!" : ""),(l+1),(col < 2 ? "|" : ")"));
+							col++;
+						}
+					}	
+				}printf("\n");
+			}
+        }
          
-    //     printf("\n");
-    //     proximo(v, VAR, VL);
-    // }
+        printf("\n");
+        proximo(v, VAR, VL);
+    }
 
 }
 
