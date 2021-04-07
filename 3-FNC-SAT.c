@@ -150,29 +150,29 @@ int percorrer(int (*mat)[50], int VAR, int VL, int N, int C) {
 	}
 
 
-	printf("TABELA DAS COMBINACOES:\n");
-    for(i=0; i<comb; i++) {
-        for(j=VAR-1; j>=0; j--) {
-			for(k=0; k<C; k++){
-				printf("(");
-				col = 0;
-				for(l=0; l<N; l++){
-					if(mat[k][l] != 0){
-						if(v[j]==0){
-							printf(" %sx%d %s", (mat[k][l] == 2 ? "!" : ""),(l+1),(col < 2 ? "|" : ")"));
-							col++;
-						}else{
-							printf(" %sx%d %s", (mat[k][l] == 2 ? "!" : ""),(l+1),(col < 2 ? "|" : ")"));
-							col++;
-						}
-					}	
-				}printf("\n");
-			}
-        }
-        // adicionar o resto das verificações
-        printf("\n");
-        proximo(v, VAR, VL);
-    }
+	// printf("TABELA DAS COMBINACOES:\n");
+    // for(i=0; i<comb; i++) {
+    //     for(j=VAR-1; j>=0; j--) {
+	// 		for(k=0; k<C; k++){
+	// 			printf("(");
+	// 			col = 0;
+	// 			for(l=0; l<N; l++){
+	// 				if(mat[k][l] != 0){
+	// 					if(v[j]==0){
+	// 						printf(" %sx%d %s", (mat[k][l] == 2 ? "!" : ""),(l+1),(col < 2 ? "|" : ")"));
+	// 						col++;
+	// 					}else{
+	// 						printf(" %sx%d %s", (mat[k][l] == 2 ? "!" : ""),(l+1),(col < 2 ? "|" : ")"));
+	// 						col++;
+	// 					}
+	// 				}	
+	// 			}printf("\n");
+	// 		}
+    //     }
+         
+    //     printf("\n");
+    //     proximo(v, VAR, VL);
+    // }
 
 }
 
@@ -221,7 +221,7 @@ void menuAutomatic(){
 		printf("----------------------------------------------------------\n");
 		printf("                                                          \n");
 		printf("            Escolha qual valor para N deseja  :           \n");
-		printf("     1 - 15        2 - 30        3 - 36        4 - 45     \n");
+		printf("     1 - 15        2 - 20        3 - 30        4 - 40     \n");
 		printf("                                                          \n");
 		printf("----------------------------------------------------------\n");
 		printf("----------------------------------------------------------\n");
@@ -237,13 +237,13 @@ void menuAutomatic(){
             N = 15;
             C = (N/3)*2;
             geraclauses(mat, N);
-			//percorrer(3,2);
-			//atribui(mat,N,C);
 		} 
 		if (escolha == 50 || escolha == 2){
-			
-			// 'a'+ rand%N
-
+			int mat[100][50];
+            int N,C;
+            N = 20;
+            C = (N/3)*2;
+            geraclauses(mat, N);
 		}
 		
 
