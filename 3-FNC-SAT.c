@@ -12,12 +12,11 @@ void semPreconceito()
     #endif
 }
 
-int geraclauses(int N){
+void geraclauses(int (*mat)[50],int N){
 			int C;
-			int randomic1,randomic2,randomic3,test1,test2,test3,counter = 1 ;
+			int randomic1,randomic2,randomic3,test1,test2,test3;
 			int i,j;
 			C = (N/3)*2;
-			int mat[100][50];
 
    			for(i=0; i<C; i++){
 				for(j=0; j<N; j++)
@@ -68,7 +67,7 @@ int geraclauses(int N){
 				mat[i][randomic3] = test3;
 				
 			}
-			//atribui(mat,N,C);
+			atribui(mat,N,C);
 			//printa tabela geral
 			// for(i=0; i<C; i++){
 			// 	for(j=0; j<N; j++){
@@ -148,7 +147,6 @@ void atribui(int (*mat)[50], int N, int C){
 	int i,j;
 	printf("N: %d\n",N);
 	printf("C: %d\n",C);
-	printf("dasdas");
 	for(i=0; i<C; i++){
 		for(j=0; j<N; j++){
 			printf("%d",mat[i][j]);
@@ -219,9 +217,9 @@ void menuAutomatic(){
             int N,C;
             N = 15;
             C = (N/3)*2;
-            //geraclauses(N);
+            geraclauses(mat, N);
 			//percorrer(3,2);
-			atribui(mat,C,N);
+			atribui(mat,N,C);
 		} 
 		if (escolha == 50 || escolha == 2){
 			
