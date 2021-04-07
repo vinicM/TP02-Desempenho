@@ -12,8 +12,7 @@ void semPreconceito()
     #endif
 }
 
-void geraclauses(int N){
-         printf("entrei na geraclauses\n");
+int geraclauses(int N){
 			int C;
 			int randomic1,randomic2,randomic3,test1,test2,test3,counter = 1 ;
 			int i,j;
@@ -69,6 +68,7 @@ void geraclauses(int N){
 				mat[i][randomic3] = test3;
 				
 			}
+			atribui(mat,N,C);
 			//printa tabela geral
 			// for(i=0; i<C; i++){
 			// 	for(j=0; j<N; j++){
@@ -79,11 +79,11 @@ void geraclauses(int N){
 			
 }
 
-void proximo(char *v, int N) {
+void proximo(char *v, int VAR, int VL) {
     int i;
     v[0]++;
-    for(i=0; i<N; i++) {
-        if(v[i] == 2) {
+    for(i=0; i<VAR; i++) {
+        if(v[i] == VL) {
             v[i] = 0;
             v[i+1]++;
         }
@@ -124,26 +124,39 @@ int verifica(char** mat, int linha, int col, char* clause){
     return flag;
 }
 
-void percorrer(int* mat, int linhas, int colums) {
-    
+int percorrer(int VAR, int VL) {
     char v[101];
-    for(int i=0; i<colums; i++) v[i] = 0;
-    int i, j;
-    long long int linhasdacomb = 1;
-    for(int i=0; i<colums; i++) linhasdacomb *= 2;
+    for(int i=0; i<VAR; i++) v[i] = 0;
+    int i, j, comb=1;
+    for(int i=0; i<VAR; i++) comb *= VL;
 
-	
-    for(i=0; i<linhasdacomb; i++) {
-		printf("...");
-        // adicionar o resto das verificações
-		//verifica se clausula da 1
-        if(verifica(mat,linhas,colums,v) == 1){ 
-			
-            printalinha(v,colums);
+    // int nega=1, negb=2;
+    // printf("(%sa | %sb)\n", (nega == 1 ? "!" : ""), (negb == 1 ? "!" : ""));
+
+    for(i=0; i<comb; i++) {
+        for(j=VAR-1; j>=0; j--) {
+            return v[j];
         }
+        // adicionar o resto das verificações
         //printf("\n");
-        proximo(v, colums);
+        proximo(v, VAR, VL);
     }
+	
+}
+
+void atribui(int** mat, int N, int C){
+	int i,j;
+	printf("N: %d\n",N);
+	printf("C: %d\n",C);
+	printf("dasdas");
+	for(i=0; i<C; i++){
+		for(j=0; j<N; j++){
+			printf("%d",mat[i][j]);
+					
+		}printf("\n");
+	}
+
+
 }
 
 void escolhaMenu(){
@@ -207,8 +220,8 @@ void menuAutomatic(){
             N = 15;
             C = (N/3)*2;
             geraclauses(N);
-			percorrer(mat,C,N);
-			
+			//percorrer(3,2);
+			//atribui(C,N);
 		} 
 		if (escolha == 50 || escolha == 2){
 			
