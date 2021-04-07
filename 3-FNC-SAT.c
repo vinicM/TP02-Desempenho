@@ -17,7 +17,7 @@ int geraclauses(int N){
 			int randomic1,randomic2,randomic3,test1,test2,test3,counter = 1 ;
 			int i,j;
 			C = (N/3)*2;
-			int mat[101][50];
+			int mat[100][50];
 
    			for(i=0; i<C; i++){
 				for(j=0; j<N; j++)
@@ -68,7 +68,7 @@ int geraclauses(int N){
 				mat[i][randomic3] = test3;
 				
 			}
-			atribui(mat,N,C);
+			//atribui(mat,N,C);
 			//printa tabela geral
 			// for(i=0; i<C; i++){
 			// 	for(j=0; j<N; j++){
@@ -144,7 +144,7 @@ int percorrer(int VAR, int VL) {
 	
 }
 
-void atribui(int** mat, int N, int C){
+void atribui(int (*mat)[50], int N, int C){
 	int i,j;
 	printf("N: %d\n",N);
 	printf("C: %d\n",C);
@@ -171,8 +171,8 @@ void escolhaMenu(){
 		printf("----------------------------------------------------------\n");
 		printf("----------------------------------------------------------\n");
 
-		a = getch();
-		//a = getchar();
+		//a = getch();
+		a = getchar();
 
 			if(a == 27){
 				system("cls");
@@ -210,18 +210,18 @@ void menuAutomatic(){
 		printf("----------------------------------------------------------\n");
 
 		int escolha;
-		//scanf("%d", &escolha);
-		escolha = getch();
+		scanf("%d", &escolha);
+		//escolha = getch();
 		system("cls");
 
-		if (escolha == 49){
-			int mat[101][50];
+		if (escolha == 49 || escolha == 1){
+			int mat[100][50];
             int N,C;
             N = 15;
             C = (N/3)*2;
-            geraclauses(N);
+            //geraclauses(N);
 			//percorrer(3,2);
-			//atribui(C,N);
+			atribui(mat,C,N);
 		} 
 		if (escolha == 50 || escolha == 2){
 			
