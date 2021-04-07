@@ -136,29 +136,39 @@ int percorrer(int (*mat)[50], int VAR, int VL, int N, int C) {
     for(int i=0; i<VAR; i++) comb *= VL;
 	int col;
 
-	printf(" TABELA ORIGINAL: \n");
-	for(i=0; i<C; i++){
-		printf("(");
-		col = 0;
-		for(j=0; j<N; j++){
-			if(mat[i][j] != 0){
-				printf(" %sx%d %s", (mat[i][j] == 1 ? "!" : ""),(j+1),(col < 2 ? "|" : ")"));
-				col++;
-			}	
-		}
-		printf("\n");
-	}
+	// printf(" TABELA ORIGINAL: \n");
+	// for(i=0; i<C; i++){
+	// 	printf("(");
+	// 	col = 0;
+	// 	for(j=0; j<N; j++){
+	// 		if(mat[i][j] != 0){
+	// 			printf(" %sx%d %s", (mat[i][j] == 1 ? "!" : ""),(j+1),(col < 2 ? "|" : ")"));
+	// 			col++;
+	// 		}	
+	// 	}
+	// 	printf("\n");
+	// }
 
 
 	printf("TABELA DAS COMBINACOES:\n");
     for(i=0; i<comb; i++) {
-        for(j=VAR-1; j>=0; j--) {
-			printf("%d ", v[j]);
-        }
+		for(k = 0; k<C; k++){
+			for(j=VAR-1; j>=0; j--) {
+				if(mat[k][j] != 0){
+					if(v[j]==0){
+						printf("%s %sx%d %s",(col == 0 ? "(" : ""),(mat[k][j] == 2 ? "!" : ""),(j+1),(col < 2 ? "|" : ")"));
+						col++;
+					}else{
+						printf(" %sx%d %s", (mat[k][j] == 2 ? "!" : ""),(j+1),(col < 2 ? "|" : ")"));
+						col++;
+					}
+				}
+        	}
          
-        printf("\n");
-        proximo(v, VAR, VL);
-    }
+        	printf("\n");
+        	proximo(v, VAR, VL);
+		}
+	}
 
 	// for(k=0; k<C; k++){
 	// 			printf("(");
