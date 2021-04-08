@@ -21,6 +21,7 @@ void semPreconceito()
 
 int percorrer(int (*mat)[50], int VAR, int VL, int N, int C) {
     char v[101];
+	int count = 0;
     for(int i=0; i<VAR; i++) v[i] = 0;
     int i, j, k, l, comb=1;
     for(int i=0; i<VAR; i++) comb *= VL;
@@ -48,9 +49,11 @@ int percorrer(int (*mat)[50], int VAR, int VL, int N, int C) {
 					if(v[j]==0){
 						printf("%s %sx%d %s",(col == 0 ? "(" : ""),(mat[k][j] == 2 ? "!" : ""),(j+1),(col < 2 ? "|" : ")"));
 						col++;
+						count++;
 					}else{
 						printf(" %sx%d %s", (mat[k][j] == 2 ? "!" : ""),(j+1),(col < 2 ? "|" : ")"));
 						col++;
+						count++;
 					}
 				}
         	}
@@ -68,14 +71,16 @@ int percorrer(int (*mat)[50], int VAR, int VL, int N, int C) {
 						if(v[j]==0){
 							printf(" %sx%d %s", (mat[k][l] == 2 ? "!" : ""),(l+1),(col < 2 ? "|" : ")"));
 							col++;
+							count++;
 						}else{
 							printf(" %sx%d %s", (mat[k][l] == 2 ? "!" : ""),(l+1),(col < 2 ? "|" : ")"));
 							col++;
+							count++;
 						}
 					}	
 				}printf("\n");
 			}
-
+	printf("%d\n", count);
 }
 
 void geraclauses(int (*mat)[50],int N){
@@ -206,13 +211,13 @@ void escolhaMenu(){
 		a = getchar();
 
 			if(a == 27){
-				//semPreconceito();
+				semPreconceito();
 				break;
 			}else if(a == 49){
 				semPreconceito();	
 								      
 			}else if(a == 50){
-				//semPreconceito();
+				semPreconceito();
 				menuAutomatic();
 				break;
 			}
@@ -229,7 +234,7 @@ void menuManual(){
 
 void menuAutomatic(){
 		int VAR, VL = 2;
-		int clause[101][3];
+		int clause[100][3];
 
 		printf("----------------------------------------------------------\n");
 		printf("----------------------------------------------------------\n");
