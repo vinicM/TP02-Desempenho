@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -145,6 +146,7 @@ int percorrer(int (*mat)[50], int VAR, int VL, int N, int C)
 	for (int i = 0; i < VAR; i++)
 		comb *= VL;
 	int col;
+	int count =0;
 
 	// printf(" TABELA ORIGINAL: \n");
 	for (i = 0; i < C; i++)
@@ -174,13 +176,15 @@ int percorrer(int (*mat)[50], int VAR, int VL, int N, int C)
 				{
 					if (v[j] == 0)
 					{
-						printf("%s %sx%d %s", (col == 0 ? "(" : ""), (mat[k][j] == 2 ? "!" : ""), (j + 1), (col < 2 ? "|" : ")"));
+						printf(" %s %sx%d %s", (col == 0 ? "(" : ""), (mat[k][j] == 2 ? "!" : ""), (j + 1), (col < 2 ? "|" : ")"));
 						col++;
+						count++;
 					}
 					else
 					{
-						printf("%s %sx%d %s", (col == 0 ? "(" : ""), (mat[k][j] == 2 ? "!" : ""), (j + 1), (col < 2 ? "|" : ")"));
+						printf(" %sx%d %s", (mat[k][j] == 2 ? "!" : ""), (j + 1), (col < 2 ? "|" : ")"));
 						col++;
+						count++;
 					}
 				}
 			}
@@ -269,7 +273,6 @@ void menuAutomatic()
 
 int main()
 {
-
 	escolhaMenu();
 	return 0;
 }
