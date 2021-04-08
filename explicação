@@ -63,3 +63,16 @@ void percorrer(int* mat, int linhas, int colums) {
         proximo(v, colums);
     }
 }
+
+
+
+
+
+tabela verdade
+
+0 0 0 0 0 0 0 0 0 0
+
+
+linha mat
+
+0 0 1 0 0 1 0 0 0 2
