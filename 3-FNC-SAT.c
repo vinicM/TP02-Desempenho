@@ -254,15 +254,7 @@ void menuAutomatic()
 	{
 		int mat[100][50];
 		int N, C;
-		N = 15;
-		C = (N / 3) * 2;
-		geraclauses(mat, N);
-	}
-	if (escolha == 50 || escolha == 2)
-	{
-		int mat[100][50];
-		int N, C;
-		N = 20;
+		N = 6;
 		C = (N / 3) * 2;
 		geraclauses(mat, N);
 	}
